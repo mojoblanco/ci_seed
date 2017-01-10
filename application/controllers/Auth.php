@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends MY_Controller {
 
 	public function __construct()
 	{
@@ -40,7 +40,7 @@ class Auth extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth/index', $this->data);
+			//$this->_render_page('auth/index', $this->data);
 		}
 	}
 
@@ -90,7 +90,7 @@ class Auth extends CI_Controller {
 				'type' => 'password',
 			);
 
-			$this->_render_page('auth/login', $this->data);
+			//$this->_render_page('auth/login', $this->data);
 		}
 	}
 
@@ -414,10 +414,10 @@ class Auth extends CI_Controller {
     {
         $this->data['title'] = $this->lang->line('create_user_heading');
 
-        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-        {
-            redirect('auth', 'refresh');
-        }
+        // if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+        // {
+        //     redirect('auth', 'refresh');
+        // }
 
         $tables = $this->config->item('tables','ion_auth');
         $identity_column = $this->config->item('identity','ion_auth');
@@ -515,7 +515,7 @@ class Auth extends CI_Controller {
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
 
-            $this->_render_page('auth/create_user', $this->data);
+            //$this->_render_page('auth/create_user', $this->data);
         }
     }
 

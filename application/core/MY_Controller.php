@@ -53,9 +53,17 @@ class MY_Controller extends CI_Controller
      */
     protected $helpers = array();
 
+    /**
+     * Current Logged in user
+     */
+     protected $user = null;
+
     /* --------------------------------------------------------------
      * GENERIC METHODS
      * ------------------------------------------------------------ */
+
+
+     
 
     /**
      * Initialise the controller, tie into the CodeIgniter superobject
@@ -67,6 +75,10 @@ class MY_Controller extends CI_Controller
 
         $this->_load_models();
         $this->_load_helpers();
+
+        if ( $this->ion_auth->logged_in() ){
+			$this->user = $this->ion_auth->user()->row();
+		}
     }
 
     /* --------------------------------------------------------------
